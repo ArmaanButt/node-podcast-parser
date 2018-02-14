@@ -89,8 +89,8 @@ module.exports = function parse(feedXML, callback) {
         'title': true,
         'guid': true,
         'link': true,
-        'itunes:summary': 'description',
-        'description': 'description',
+        'itunes:summary': true,
+        'description': true,
         'pubDate': function pubDate(text) {
           return { published: new Date(text) };
         },
