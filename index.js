@@ -88,7 +88,8 @@ module.exports = function parse(feedXML, callback) {
       node.textMap = {
         'title': true,
         'guid': true,
-        'itunes:summary' : 'itunes:summary',
+        'link': true,
+        'itunes:summary': 'description',
         'description': 'description',
         'pubDate': function pubDate(text) {
           return { published: new Date(text) };

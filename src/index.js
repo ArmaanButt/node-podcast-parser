@@ -84,23 +84,9 @@ module.exports = function parse(feedXML, callback) {
         'guid': true,
         'link': true,
         'itunes:summary': 'description',
+        'description': 'description',
         'pubDate': text => { return { published: new Date(text) }; },
-        'itunes:duration': text => {
-          return {
-            // parse '1:03:13' into 3793 seconds
-            duration: text
-              .split(':')
-              .reverse()
-              .reduce((acc, val, index) => {
-                const steps = [60, 60, 24];
-                var muliplier = 1;
-                while (index--) {
-                  muliplier *= steps[index];
-                }
-                return acc + parseInt(val) * muliplier;
-              }, 0)
-          };
-        }
+        'itunes:duration': 'duration'
       };
     } else if (tmpEpisode) {
       // Episode specific attributes
